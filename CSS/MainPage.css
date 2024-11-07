@@ -1,0 +1,153 @@
+
+:root {
+    --cor_principal: #01357e;
+    --cor_secundaria:  #d48b33;
+    --cor_fundo: #ffe0a1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+header {
+    height: 160px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--cor_fundo);
+    position: relative;
+    align-items: center;
+}
+
+.LogoHeader {
+    background-image: url(/Diversos/images/C\ \(6\).png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 470px;
+    width: 500px;
+    position: absolute;
+    top: -100%;
+    left: 0%;
+}
+
+header nav {
+    position: absolute;
+    right: 40px;
+    width: 400px;
+}
+
+.banner {
+    background-image: url(/Diversos/images/ImageBanner.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
+    box-shadow: inset 1px 1px 10px black;
+}
+
+.banner-text {
+    backdrop-filter: blur(2px);
+    background: linear-gradient(to right, black 5%, transparent 95%);
+    color: var(--cor_secundaria);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    padding-left: 16px;
+    justify-content: center;
+    gap: 50px;
+    text-shadow: 0px 0px 50px gray;
+}
+
+main .topico1 {
+    background: var(--cor_fundo);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--cor_principal);
+    padding: 10px;
+}
+
+main .topico1 h2 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main .topico1 p {
+    text-align: justify;
+    font-size: 18px;
+    text-indent: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+main .topico2 {
+    background: var(--cor_principal);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--cor_secundaria);
+    padding: 10px;
+}
+
+main .topico2 h2 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main .topico2 p {
+    text-align: center;
+    font-size: 18px;
+}
+
+main .topico2 .ExemploCalendar {
+    height: 50vh;
+    width: 80%;
+    border: 1px solid var(--cor_secundaria);
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px var(--cor_secundaria);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .topico2 .ExemploCalendar table {
+    width: 90%;
+    height: 90%;
+}
+
+main .topico2 .ExemploCalendar td {
+    border: 1px solid #d48b33;
+    min-width: 50px;
+    min-height: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: .3s;
+}
+
+main .topico2 .ExemploCalendar td:hover {
+    background-color: var(--cor_secundaria);
+    color: var(--cor_principal);
+}
+
+main .topico2 .ExemploCalendar td sup {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
