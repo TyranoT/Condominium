@@ -102,6 +102,7 @@ main .topico2 {
     justify-content: center;
     color: var(--cor_secundaria);
     padding: 10px;
+    padding-bottom: 40px;
 }
 
 main .topico2 h2 {
@@ -150,4 +151,95 @@ main .topico2 .ExemploCalendar td sup {
     position: absolute;
     top: 10px;
     left: 5px;
+}
+
+footer {
+    background-color: darkslategray;
+    min-height: 20vh;
+}
+
+footer .navFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.452);
+}
+
+footer .navFooter button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: .3s;
+}
+
+footer .navFooter button:hover{
+    color: var(--cor_secundaria);
+}
+
+footer .sectionFooter {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: white;
+}
+
+footer .sectionFooter p {
+    text-align: center;
+    padding-right: 40px;
+    padding-left: 20px;
+}
+
+footer .asideFooter {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: auto;
+    justify-content: space-around;
+    padding-bottom: 40px;
+    color: white;
+    font-size: 24px;
+}
+
+footer .asideFooter a {
+    text-decoration: none;
+    color: white;
+}
+
+footer .asideFooter a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+footer .asideFooter a .bi.bi-facebook {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-facebook:hover {
+    color: mediumblue;
+}
+
+footer .asideFooter a .bi.bi-whatsapp {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-whatsapp:hover {
+    color: greenyellow;
+}
+
+footer .asideFooter a .bi.bi-instagram {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-instagram:hover {
+    color: fuchsia;
+}
+
+footer .asideFooter a .bi.bi-github {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-github:hover {
+    color: black;
 }
