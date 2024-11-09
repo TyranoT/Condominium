@@ -38,7 +38,7 @@ header {
 }
 
 .LogoHeader {
-    background-image: url(/Diversos/images/C\ \(6\).png);
+    background-image: url(../Diversos/images/C\ \(6\).png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -79,7 +79,7 @@ header nav {
 }
 
 .banner {
-    background-image: url(/Diversos/images/ImageBanner.jpg);
+    background-image: url(../Diversos/images/ImageBanner.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
