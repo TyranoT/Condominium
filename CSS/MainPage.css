@@ -185,7 +185,7 @@ main .topico2 .ExemploCalendar td sup {
 }
 
 footer {
-    background-color: darkslategray;
+    background-color: var(--cor_fundo);
     min-height: 20vh;
 }
 
@@ -196,13 +196,13 @@ footer .navFooter {
     padding-top: 40px;
     padding-right: 40px;
     padding-bottom: 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.452);
+    border-bottom: 1px solid var(--cor_principal);
 }
 
 footer .navFooter button {
     background: transparent;
     border: none;
-    color: white;
+    color: var(--cor_principal);
     font-weight: 600;
     transition: .3s;
 }
@@ -214,7 +214,7 @@ footer .navFooter button:hover{
 footer .sectionFooter {
     padding-top: 40px;
     padding-bottom: 40px;
-    color: white;
+    color: var(--cor_principal);
 }
 
 footer .sectionFooter p {
@@ -241,7 +241,7 @@ footer .asideFooter a {
 
 footer .asideFooter a:visited {
     text-decoration: none;
-    color: white;
+    color: var(--cor_principal);
 }
 
 footer .asideFooter a .bi.bi-facebook {
