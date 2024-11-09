@@ -29,6 +29,14 @@ header {
     align-items: center;
 }
 
+@media (max-width: 800px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+    }
+}
+
 .LogoHeader {
     background-image: url(/Diversos/images/C\ \(6\).png);
     background-repeat: no-repeat;
@@ -41,10 +49,33 @@ header {
     left: 0%;
 }
 
+@media (max-width: 800px) {
+    .LogoHeader {
+        display: flex;
+        position: relative;
+        top: 0;
+        width: 50%;
+        width: 900px;
+        margin-top: 20px;
+    }
+}
+
 header nav {
     position: absolute;
     right: 40px;
     width: 400px;
+}
+
+@media (max-width: 800px) {
+    header nav {
+        display: flex;
+        position: relative;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        justify-content: space-around;
+        padding-bottom: 10px;
+    }
 }
 
 .banner {
@@ -163,6 +194,7 @@ footer .navFooter {
     flex-direction: row;
     justify-content: space-around;
     padding-top: 40px;
+    padding-right: 40px;
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.452);
 }
