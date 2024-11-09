@@ -47,7 +47,7 @@ header {
 .LogoHeader {
     background-image: url(../Diversos/images/C\ \(6\).png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 200%;
     background-position: center;
     height: 470px;
     width: 500px;
@@ -61,8 +61,19 @@ header {
         display: flex;
         position: relative;
         top: 0;
-        width: 50%;
-        width: 900px;
+        width: 100%;
+        background-size: 160%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .LogoHeader {
+        display: flex;
+        position: relative;
+        top: 0;
+        width: 100%;
+        background-size: 250%;
         margin-top: 20px;
     }
 }
@@ -243,7 +254,7 @@ footer .asideFooter {
 
 footer .asideFooter a {
     text-decoration: none;
-    color: white;
+    color: var(--cor_principal);
 }
 
 footer .asideFooter a:visited {
