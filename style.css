@@ -22,13 +22,21 @@ body {
     color: var(--bege);
 }
 
+.container{
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-container {
     background-color: var(--laranja);
     width: 350px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    margin-left: 60px;
+    margin-top: 20%;
 }
 
 h2 {
@@ -53,8 +61,8 @@ input[type="password"] {
     margin-top: 5px;
 }
 
-button {
-    margin-top: 20px;
+.botao-entrar {
+    margin-top: 15px;
     padding: 10px;
     background-color: var(--azul-escuro);
     color: var(--bege);
@@ -62,6 +70,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
 }
+
 
 button:hover {
     background-color: var(--bege);
@@ -141,3 +150,18 @@ color: white;
     background-size: cover; 
     border-radius: 50%;
   }
+
+.botao {
+    
+    padding: 0px;
+    color:var(--laranja);
+    margin-top: 5%;
+    margin-left: 46%;
+    
+  }
+
+
+.login-cadastro{
+    display: flex;
+    flex-direction: column;
+}
