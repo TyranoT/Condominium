@@ -65,6 +65,15 @@
             font-size: 14px;
         }
 
+        .day-button-invalid {
+            padding: 10px;
+            background-color: #00458f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
         .day-button:hover {
             background-color: #0056b3;
         }
@@ -78,12 +87,10 @@
         <div id="calendar" class="calendar"></div>
     </div>
     <nav id="sideBar" class="sideBarHidden">
-        <button
-            onclick="FecharSideBar()"
-        >
+        <button onclick="FecharSideBar()">
             X
         </button>
-        <form action="" style="display: flex; flex-direction: column;">
+        <form action="" id="form" style="display: flex; flex-direction: column;">
             <label for="" style="display: flex; flex-direction: column;">
                 <p>
                     Nome do Responsavel:
@@ -124,11 +131,13 @@
         const calendarContainer = document.getElementById('calendar');
         const sideBar = document.getElementById('sideBar');
         const dataInput = document.getElementById('data');
+        const form = document.getElementById("form");
         function createCalendar(year, month) {
             calendarContainer.innerHTML = '';
 
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date().getDate();
 
 
             for (let i = 0; i < firstDay; i++) {
@@ -138,15 +147,24 @@
 
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayButton = document.createElement('button');
-                dayButton.className = 'day-button';
+                if (day < today) {
+                    dayButton.className = 'day-button-invalid'
+                } else {
+                    dayButton.className = 'day-button';
+                }
                 dayButton.textContent = day;
 
                 dayButton.id = `day-${day}`;
 
                 dayButton.onclick = () => {
                     const formate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
-                    sideBar.className = 'sideBar';
-                    dataInput.value = formate;
+                    if (day < today) {
+                        sideBar.className = 'sideBarHidden';
+                        window.alert('Você não pode agendar datas já passadas!');
+                    } else {
+                        sideBar.className = 'sideBar';
+                        dataInput.value = formate;
+                    }
                 };
 
                 calendarContainer.appendChild(dayButton);
