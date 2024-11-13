@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário com Botões</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            transition: .5s;
+            overflow-x: hidden;
+        }
+
+        .sideBar {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            right: 0;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            height: 100%;
+        }
+
+        .sideBar input {
+            width: 90%;
+            margin: auto;
+            background-color: transparent;
+            border: 1px solid white;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .sideBarHidden {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            right: 0;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            height: 100%;
+            transform: translateX(100%);
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .day-button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .day-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bloco">
+        <h2 style="text-align:center">Calendário</h2>
+        <div id="calendar" class="calendar"></div>
+    </div>
+    <nav id="sideBar" class="sideBarHidden">
+        <button
+            onclick="FecharSideBar()"
+        >
+            X
+        </button>
+        <form action="" style="display: flex; flex-direction: column;">
+            <label for="" style="display: flex; flex-direction: column;">
+                <p>
+                    Nome do Responsavel:
+                </p>
+                <input type="text">
+            </label>
+            <label for="" style="display: flex; flex-direction: column;">
+                <p>
+                    Sala de Reserva:
+                </p>
+                <input type="text">
+            </label>
+            <label for="" style="display: flex; flex-direction: column;">
+                <p>
+                    Horário de inicio:
+                </p>
+                <input type="datetime">
+            </label>
+            <label for="" style="display: flex; flex-direction: column;">
+                <p>
+                    Horário de fim:
+                </p>
+                <input type="datetime">
+            </label>
+            <label for="" style="display: flex; flex-direction: column;">
+                <p>
+                    Data:
+                </p>
+                <input id="data" type="date">
+            </label>
+            <button type="submit" style="margin-top: 10px;">
+                Agendar
+            </button>
+        </form>
+    </nav>
+
+    <script>
+        const calendarContainer = document.getElementById('calendar');
+        const sideBar = document.getElementById('sideBar');
+        const dataInput = document.getElementById('data');
+        function createCalendar(year, month) {
+            calendarContainer.innerHTML = '';
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+
+            for (let i = 0; i < firstDay; i++) {
+                const emptyCell = document.createElement('div');
+                calendarContainer.appendChild(emptyCell);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayButton = document.createElement('button');
+                dayButton.className = 'day-button';
+                dayButton.textContent = day;
+
+                dayButton.id = `day-${day}`;
+
+                dayButton.onclick = () => {
+                    const formate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+                    sideBar.className = 'sideBar';
+                    dataInput.value = formate;
+                };
+
+                calendarContainer.appendChild(dayButton);
+            }
+        }
+
+        function FecharSideBar() {
+            sideBar.className = 'sideBarHidden'
+        }
+
+        const today = new Date();
+        createCalendar(today.getFullYear(), today.getMonth());
+    </script>
+
+</body>
+
+</html>
