@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,60 +69,71 @@
             background-color: #00458f;
             color: white;
             border: none;
-            cursor: pointer;
+            cursor: not-allowed;
             font-size: 14px;
         }
 
         .day-button:hover {
             background-color: #0056b3;
         }
+
+        .bloco {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .mes {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            border: 1px solid black;
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="bloco">
-        <h2 style="text-align:center">Calendário</h2>
+    <div>
+        <div class="bloco">
+            <h2 style="text-align:center">Calendário</h2>
+            <span class="mes">
+                <button onclick="prevMonth()">← Anterior</button>
+                <span id="monthYear"></span>
+                <button onclick="nextMonth()">Próximo →</button>
+            </span>
+        </div>
         <div id="calendar" class="calendar"></div>
     </div>
     <nav id="sideBar" class="sideBarHidden">
-        <button onclick="FecharSideBar()">
-            X
-        </button>
+        <button onclick="FecharSideBar()">X</button>
         <form action="" id="form" style="display: flex; flex-direction: column;">
-            <label for="" style="display: flex; flex-direction: column;">
-                <p>
-                    Nome do Responsavel:
-                </p>
+            <label style="display: flex; flex-direction: column;">
+                <p>Nome do Responsável:</p>
                 <input type="text">
             </label>
-            <label for="" style="display: flex; flex-direction: column;">
-                <p>
-                    Sala de Reserva:
-                </p>
+            <label style="display: flex; flex-direction: column;">
+                <p>Sala de Reserva:</p>
                 <input type="text">
             </label>
-            <label for="" style="display: flex; flex-direction: column;">
-                <p>
-                    Horário de inicio:
-                </p>
+            <label style="display: flex; flex-direction: column;">
+                <p>Horário de Início:</p>
                 <input type="datetime">
             </label>
-            <label for="" style="display: flex; flex-direction: column;">
-                <p>
-                    Horário de fim:
-                </p>
+            <label style="display: flex; flex-direction: column;">
+                <p>Horário de Fim:</p>
                 <input type="datetime">
             </label>
-            <label for="" style="display: flex; flex-direction: column;">
-                <p>
-                    Data:
-                </p>
+            <label style="display: flex; flex-direction: column;">
+                <p>Data:</p>
                 <input id="data" type="date">
             </label>
-            <button type="submit" style="margin-top: 10px;">
-                Agendar
-            </button>
+            <button type="submit" style="margin-top: 10px;">Agendar</button>
         </form>
     </nav>
 
@@ -131,14 +141,19 @@
         const calendarContainer = document.getElementById('calendar');
         const sideBar = document.getElementById('sideBar');
         const dataInput = document.getElementById('data');
-        const form = document.getElementById("form");
+        const monthYearLabel = document.getElementById('monthYear');
+        let anoRef = new Date().getFullYear();
+        let mesRef = new Date().getMonth();
+        const hoje = new Date();
+
         function createCalendar(year, month) {
             calendarContainer.innerHTML = '';
 
+            const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+            monthYearLabel.textContent = `${monthNames[month]} de ${year}`;
+
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const today = new Date().getDate();
-
 
             for (let i = 0; i < firstDay; i++) {
                 const emptyCell = document.createElement('div');
@@ -147,23 +162,24 @@
 
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayButton = document.createElement('button');
-                if (day < today) {
-                    dayButton.className = 'day-button-invalid'
+                const buttonDate = new Date(year, month, day);
+
+                if (buttonDate < hoje) {
+                    dayButton.className = 'day-button-invalid';
+                    dayButton.disabled = true;
                 } else {
                     dayButton.className = 'day-button';
                 }
+
                 dayButton.textContent = day;
-
                 dayButton.id = `day-${day}`;
-
                 dayButton.onclick = () => {
-                    const formate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
-                    if (day < today) {
-                        sideBar.className = 'sideBarHidden';
-                        window.alert('Você não pode agendar datas já passadas!');
-                    } else {
+                    const formate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    if (!dayButton.disabled) {
                         sideBar.className = 'sideBar';
                         dataInput.value = formate;
+                    } else {
+                        alert('Você não pode agendar datas já passadas!');
                     }
                 };
 
@@ -171,14 +187,30 @@
             }
         }
 
-        function FecharSideBar() {
-            sideBar.className = 'sideBarHidden'
+        function prevMonth() {
+            mesRef--;
+            if (mesRef < 0) {
+                mesRef = 11;
+                anoRef--;
+            }
+            createCalendar(anoRef, mesRef);
         }
 
-        const today = new Date();
-        createCalendar(today.getFullYear(), today.getMonth());
+        function nextMonth() {
+            mesRef++;
+            if (mesRef > 11) {
+                mesRef = 0;
+                anoRef++;
+            }
+            createCalendar(anoRef, mesRef);
+        }
+
+        function FecharSideBar() {
+            sideBar.className = 'sideBarHidden';
+        }
+
+        createCalendar(anoRef, mesRef);
     </script>
 
 </body>
-
 </html>
