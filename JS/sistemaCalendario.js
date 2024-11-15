@@ -3,6 +3,7 @@ const calendarContainer = document.getElementById('calendar');
 const sideBar = document.getElementById('sideBar');
 const dataInput = document.getElementById('data');
 const monthYearLabel = document.getElementById('monthYear');
+const info = document.getElementById('info');
 let anoRef = new Date().getFullYear();
 let mesRef = new Date().getMonth();
 const hoje = new Date();
@@ -45,6 +46,7 @@ function reqAgendados() {
         .then(resposta => resposta.json())
         .then(data => {
             console.log(data.data);
+            info.innerHTML = `${data.nomeSindico} | ${data.nomeCondominio}`;
             createCalendar(anoRef, mesRef, data.data);
         })
 }

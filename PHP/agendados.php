@@ -4,7 +4,7 @@ require './connectBD.php';
 
 $email = $_SESSION['email'];
 
-$query_condominio = "SELECT id FROM usuarios WHERE email = ?";
+$query_condominio = "SELECT * FROM usuarios WHERE email = ?";
 $query_agendados = "SELECT * FROM agendamentos WHERE id_usuario = ?";
 $stmt_agendados = mysqli_prepare($connect, $query_agendados);
 $stmt_condominio = mysqli_prepare($connect, $query_condominio);
@@ -16,6 +16,8 @@ if($stmt_condominio) {
 
     if($row = mysqli_fetch_assoc($result)) {
         $id_user = $row['id'];
+        $nomeCondominio = $row['nomeCondominio'];
+        $nomeSindico = $row['nomeSindico'];
         if($stmt_agendados){
             mysqli_stmt_bind_param($stmt_agendados, 'i', $id_user);
             mysqli_stmt_execute($stmt_agendados);
@@ -29,6 +31,8 @@ if($stmt_condominio) {
                     'data' => $data,
                     'sala' => $sala,
                     'nomeResponsavel' => $nomeResponsavel,
+                    'nomeCondominio' => $nomeCondominio,
+                    'nomeSindico' => $nomeSindico,
                 ]);
             }
         }
