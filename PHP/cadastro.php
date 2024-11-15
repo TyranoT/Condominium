@@ -7,4 +7,11 @@ $numeroCondominio = $_POST['numeroCondominio'];
 $estadoCondominio = $_POST['estadoCondominio'];
 $salas = json_decode($_POST['salasArmazenado'], true);
 
-$connect = mysqli_connect('127.0.0.1:5500', 'root', 'Monteiro8877#', 'Condominium');
+$connect = mysqli_connect('jdbc:mysql://junction.proxy.rlwy.net:10676/railway', 'root', 'VzXXsFUcaDRjnHrRbgFycSQzayDyKASl', 'railway');
+
+if($connect) {
+    echo "Banco de Dados Criado";
+} else {
+    echo "Erro";
+}
+?>
