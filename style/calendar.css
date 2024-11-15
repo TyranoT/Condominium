@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+:root {
+    --azul-mais-escuro: #01204D;
+    --azul-escuro: #01357e;
+    --laranja: #d48b33;
+    --bege: #ffe0a1;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--azul-escuro);
+    color: var(--laranja);
+}
+
+/* Configuração do cabeçalho*/
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bege);
+    box-shadow: 0 10px 10px rgba(1, 40, 94, 0.5) ;
+    padding: 5px 30px;
+    margin-bottom: 40px;
+}
+
+/* Configuração do conteiner principal que tem toda a parte que não é footer ou header*/
+main{
+    border: 1px solid var(--laranja);
+    box-shadow: -5px 0px 10px var(--azul-mais-escuro), 5px 0px 10px var(--azul-mais-escuro);
+    max-width: 900px;
+    min-width: 350px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 40px;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+/* Configuração do h1 dentro da main*/
+main > h1{
+    position: relative;
+    text-align: center;
+    text-shadow: -1px 1px 2px rgba(0, 0, 0,0.5);
+    margin-bottom: 40px;
+}
+
+/* Criando o traço embaixo do h1 */
+main > h1::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    transform: translateX(50%);
+    z-index: -1;
+    bottom: -5px;
+    width: 50%;
+    height: 1px;
+    background-color: var(--laranja);
+}
+
+/* Configuração do bloco que fica os botões PRÓXIMO, ANTERIOR e a data */
+.bloco{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Configuração do botões PRÓXIMO e ANTERIOR*/
+.mes > button{
+    background-color: var(--azul-escuro);
+    outline: 0;
+    border: 1px solid var(--laranja);
+    padding: 5px;
+    border-radius: 10px;
+    color: var(--laranja);
+}
+
+/*  Configurando quando o botão fica HOVER */
+.mes > button:hover{
+    transition: .5s;
+    background-color: var(--laranja);
+    color: white;
+}
+
+/* Texto da data */
+#monthYear{
+    font-size: large;
+}
+
+/* Configurando a div do calendário */
+.calendar{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    gap: 2px;
+    max-width: 800px;
+    margin: auto;
+    height: 80vh;
+}
+
+/* Configuração dos botões do calendário */
+.dia-botao-valido, .dia-botao-invalido{
+    background-color: transparent;
+    border: 1px solid var(--laranja);
+    color: var(--laranja);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Configurando o que acontece quando os botões válidos ficam HOVER*/
+.dia-botao-valido:hover{
+    transition: .5s;
+    background-color: var(--laranja);
+    color: white;
+}
+
+/* Cor de fundo dos dias que já passaram */
+.dia-botao-invalido{
+    background-color: var(--azul-mais-escuro);
+}
+
+/* Configuração do rodapé */
+footer{
+    background-color: var(--azul-mais-escuro);
+    text-align: center;
+    padding: 5px;
+}
