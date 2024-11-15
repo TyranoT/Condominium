@@ -1,0 +1,344 @@
+
+:root {
+    --cor_principal: #01357e;
+    --cor_secundaria:  #d48b33;
+    --cor_fundo: #ffe0a1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 160px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: var(--cor_fundo);
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+    }
+}
+
+.LogoHeader {
+    background-image: url(../Diversos/images/C\ \(6\).png);
+    background-repeat: no-repeat;
+    background-size: 250%;
+    background-position: center;
+    height: 420px;
+    width: 420px;
+}
+
+@media (max-width: 800px) {
+    .LogoHeader {
+        display: flex;
+        width: 100%;
+        background-size: 160%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .LogoHeader {
+        display: flex;
+        width: 100%;
+        background-size: 250%;
+        margin-top: 20px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    header nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding-bottom: 10px;
+    }
+}
+
+header nav {
+    right: 40px;
+    width: 400px;
+}
+
+.banner {
+    background-image: url(../Diversos/images/ImageBanner.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
+    box-shadow: inset 1px 1px 10px black;
+}
+
+.banner-text {
+    backdrop-filter: blur(2px);
+    background: linear-gradient(to right, black 5%, transparent 95%);
+    color: var(--cor_secundaria);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    padding-left: 16px;
+    justify-content: center;
+    gap: 50px;
+    text-shadow: 0px 0px 50px gray;
+}
+
+.sideBar {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    right: 0;
+    padding: 10px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    backdrop-filter: blur(5px);
+    background-color: #01357e93;
+    border: 1px solid black;
+    border-radius: 0px 0px 0px 5px;
+    color: white;
+}
+
+.sideBar .buttonClose {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    border: 1px solid darkred;
+    font-weight: 600;
+    color: white;
+    border-radius: 0px 0px 5px 0px;
+    background-color: crimson;
+}
+
+.sideBar label {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.sideBar select {
+    width: 90%;
+    margin: auto;
+    background-color: transparent;
+    padding: 3px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 6px;
+}
+
+.sideBar select option {
+    background-color: black;
+    color: white;
+}
+
+.sideBar input {
+    width: 90%;
+    margin: auto;
+    padding: 3px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
+.sideBar .btn.btn-primary {
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.sideBarHidden {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    height: 100%;
+    transform: translateX(100%);
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    height: 40%;
+    width: 50%;
+    margin: auto;
+}
+
+.day-button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.day-button-invalid {
+    padding: 10px;
+    background-color: #00458f;
+    color: white;
+    border: none;
+    cursor: not-allowed;
+    font-size: 14px;
+}
+
+.day-button:hover {
+    background-color: #0056b3;
+}
+
+.blocoCalendario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    padding-top: 30px;
+    background-color: var(--cor_principal);
+    color: #d48b33;
+}
+
+.blocoCalendario .bloco {
+    width: 80%;
+}
+
+.blocoCalendario button {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.mes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.day-button-agendado {
+    background-color: var(--cor_secundaria);
+    color: var(--cor_principal);
+}
+
+footer {
+    background-color: var(--cor_fundo);
+    min-height: 20vh;
+}
+
+footer .navFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--cor_principal);
+}
+
+footer .navFooter button {
+    background: transparent;
+    border: none;
+    color: var(--cor_principal);
+    font-weight: 600;
+    transition: .3s;
+}
+
+footer .navFooter button:hover{
+    color: var(--cor_secundaria);
+}
+
+footer .sectionFooter {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: var(--cor_principal);
+}
+
+footer .sectionFooter p {
+    text-align: center;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+footer .asideFooter {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: auto;
+    justify-content: space-around;
+    padding-bottom: 40px;
+    color: white;
+    font-size: 24px;
+}
+
+footer .asideFooter a {
+    text-decoration: none;
+    color: var(--cor_principal);
+}
+
+footer .asideFooter a:visited {
+    text-decoration: none;
+    color: var(--cor_principal);
+}
+
+footer .asideFooter a .bi.bi-facebook {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-facebook:hover {
+    color: mediumblue;
+}
+
+footer .asideFooter a .bi.bi-whatsapp {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-whatsapp:hover {
+    color: greenyellow;
+}
+
+footer .asideFooter a .bi.bi-instagram {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-instagram:hover {
+    color: fuchsia;
+}
+
+footer .asideFooter a .bi.bi-github {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-github:hover {
+    color: black;
+}

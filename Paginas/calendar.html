@@ -3,214 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/CalendarStyle.css">
+    <link rel="shortcut icon" href="../Diversos/images/C (7)_Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Calendário com Botões</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-            transition: .5s;
-            overflow-x: hidden;
-        }
-
-        .sideBar {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            right: 0;
-            padding: 10px;
-            background-color: black;
-            color: white;
-            height: 100%;
-        }
-
-        .sideBar input {
-            width: 90%;
-            margin: auto;
-            background-color: transparent;
-            border: 1px solid white;
-            border-radius: 5px;
-            color: white;
-        }
-
-        .sideBarHidden {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            right: 0;
-            padding: 10px;
-            background-color: black;
-            color: white;
-            height: 100%;
-            transform: translateX(100%);
-        }
-
-        .calendar {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 2px;
-            max-width: 300px;
-            margin: auto;
-        }
-
-        .day-button {
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .day-button-invalid {
-            padding: 10px;
-            background-color: #00458f;
-            color: white;
-            border: none;
-            cursor: not-allowed;
-            font-size: 14px;
-        }
-
-        .day-button:hover {
-            background-color: #0056b3;
-        }
-
-        .bloco {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .mes {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
-            border: 1px solid black;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body>
 
-    <div>
+    <header>
+        <div class="LogoHeader"></div>
+        <nav>
+            <button class="btn btn-outline-primary">Início</button>
+            <button class="btn btn-outline-primary">Informações</button>
+            <a href="./Paginas/signup.html"><button class="btn btn-outline-primary">Criar Conta</button></a>
+            <a href="./Paginas/signin.html"><button class="btn btn-outline-primary">Entrar</button></a>
+        </nav>
+    </header>
+
+    <main class="blocoCalendario">
         <div class="bloco">
             <h2 style="text-align:center">Calendário</h2>
             <span class="mes">
-                <button onclick="prevMonth()">← Anterior</button>
+                <button class="btn btn-primary" onclick="prevMonth()">← Anterior</button>
                 <span id="monthYear"></span>
-                <button onclick="nextMonth()">Próximo →</button>
+                <button class="btn btn-primary" onclick="nextMonth()">Próximo →</button>
             </span>
         </div>
         <div id="calendar" class="calendar"></div>
-    </div>
+    </main>
     <nav id="sideBar" class="sideBarHidden">
-        <button onclick="FecharSideBar()">X</button>
-        <form action="" id="form" style="display: flex; flex-direction: column;">
-            <label style="display: flex; flex-direction: column;">
+        <button class="buttonClose" onclick="FecharSideBar()">X</button>
+        <form action="../PHP/agendamento.php" method="post" id="form" style="display: flex; flex-direction: column;">
+            
+            <label for="nomeResponsavel" style="display: flex; flex-direction: column;">
                 <p>Nome do Responsável:</p>
-                <input type="text">
+                <input name="nomeResponsavel" id="nomeResponsavel" type="text">
             </label>
-            <label style="display: flex; flex-direction: column;">
+            
+            <label for="salaSelect" style="display: flex; flex-direction: column;">
                 <p>Sala de Reserva:</p>
-                <input type="text">
+                <select name="salaSelect" id="salaSelect">
+
+                </select>
             </label>
-            <label style="display: flex; flex-direction: column;">
+
+            <label for="horaInicio" style="display: flex; flex-direction: column;">
                 <p>Horário de Início:</p>
-                <input type="datetime">
+                <input name="horaInicio" id="horaInicio" type="time">
             </label>
-            <label style="display: flex; flex-direction: column;">
+
+            <label for="horaFim" style="display: flex; flex-direction: column;">
                 <p>Horário de Fim:</p>
-                <input type="datetime">
+                <input name="horaFim" id="horaFim" type="time">
             </label>
-            <label style="display: flex; flex-direction: column;">
+
+            <label for="data" style="display: flex; flex-direction: column;">
                 <p>Data:</p>
-                <input id="data" type="date">
+                <input name="data" id="data" type="date">
             </label>
-            <button type="submit" style="margin-top: 10px;">Agendar</button>
+
+            <button type="submit" class="btn btn-primary">Agendar</button>
         </form>
     </nav>
+    <footer>
+        <nav class="navFooter">
+            <button>Informações</button>
+            <button>Contatos</button>
+            <button>Ajuda</button>
+        </nav>
+        <section class="sectionFooter">
+            <p>
+                O Condominium foi criado para tornar a vida dos síndicos e organizadores de condomínios mais leve e
+                organizada. Queremos facilitar a gestão de reservas de espaços comuns, promovendo um ambiente mais
+                colaborativo e acessível para todos.
+            </p>
+        </section>
+        <aside class="asideFooter">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-github"></i></a>
+        </aside>
+    </footer>
 
-    <script>
-        const calendarContainer = document.getElementById('calendar');
-        const sideBar = document.getElementById('sideBar');
-        const dataInput = document.getElementById('data');
-        const monthYearLabel = document.getElementById('monthYear');
-        let anoRef = new Date().getFullYear();
-        let mesRef = new Date().getMonth();
-        const hoje = new Date();
-
-        function createCalendar(year, month) {
-            calendarContainer.innerHTML = '';
-
-            const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-            monthYearLabel.textContent = `${monthNames[month]} de ${year}`;
-
-            const firstDay = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-            for (let i = 0; i < firstDay; i++) {
-                const emptyCell = document.createElement('div');
-                calendarContainer.appendChild(emptyCell);
-            }
-
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dayButton = document.createElement('button');
-                const buttonDate = new Date(year, month, day);
-
-                if (buttonDate < hoje) {
-                    dayButton.className = 'day-button-invalid';
-                    dayButton.disabled = true;
-                } else {
-                    dayButton.className = 'day-button';
-                }
-
-                dayButton.textContent = day;
-                dayButton.id = `day-${day}`;
-                dayButton.onclick = () => {
-                    const formate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                    if (!dayButton.disabled) {
-                        sideBar.className = 'sideBar';
-                        dataInput.value = formate;
-                    } else {
-                        alert('Você não pode agendar datas já passadas!');
-                    }
-                };
-
-                calendarContainer.appendChild(dayButton);
-            }
-        }
-
-        function prevMonth() {
-            mesRef--;
-            if (mesRef < 0) {
-                mesRef = 11;
-                anoRef--;
-            }
-            createCalendar(anoRef, mesRef);
-        }
-
-        function nextMonth() {
-            mesRef++;
-            if (mesRef > 11) {
-                mesRef = 0;
-                anoRef++;
-            }
-            createCalendar(anoRef, mesRef);
-        }
-
-        function FecharSideBar() {
-            sideBar.className = 'sideBarHidden';
-        }
-
-        createCalendar(anoRef, mesRef);
-    </script>
+    <script src="../JS/sistemaCalendario.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 
 </body>
 </html>

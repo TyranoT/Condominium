@@ -1,5 +1,7 @@
 <?php
 
+require "./connectBD.php";
+
 $nomeSindico = $_POST['nomeSindico'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
@@ -9,14 +11,12 @@ $numeroCondominio = $_POST['numeroCondominio'];
 $estadoCondominio = $_POST['estadoCondominio'];
 $salas = json_decode($_POST['salasArmazenado'], true); // Decodifica para array
 
-// Conexão com o Railway que o local onde está hospedado o banco de dados!
-$connect = mysqli_connect('junction.proxy.rlwy.net', 'root', 'VzXXsFUcaDRjnHrRbgFycSQzayDyKASl', 'railway', 10676);
-
 if ($connect) {
-    $query = "INSERT INTO usuarios (nomeSindico, email, senha, nomeCondominio, nomeRua, numeroCondominio, estadoCondominio, salas) 
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; // ? Representa paramentros que serão seguidos
+    $queryUser = "INSERT INTO usuarios (nomeSindico, email, senha, nomeCondominio, nomeRua, numeroCondominio, estadoCondominio, salas) 
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; // ? Representa paramentros que serão seguidos
+
     
-    $stmt = mysqli_prepare($connect, $query); // Prepara para passar os paramentros
+    $stmt = mysqli_prepare($connect, $queryUser); // Prepara para passar os paramentros
     
 
     if ($stmt) { // Se tem paramentros
@@ -27,7 +27,10 @@ if ($connect) {
         
         // Aqui ele execute e se tudo der certo ele retorna true para acionar o if
         if (mysqli_stmt_execute($stmt)) {
-            echo "Dados inseridos com sucesso!";
+            echo "<script>
+             window.alert('Dados Inseridos Com Sucesso');
+             window.location.href = '../'
+            </script>";
         } else {
             echo "Erro ao executar a query: " . mysqli_stmt_error($stmt);
         }
