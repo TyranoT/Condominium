@@ -1,7 +1,6 @@
-
 :root {
     --cor_principal: #01357e;
-    --cor_secundaria:  #d48b33;
+    --cor_secundaria: #d48b33;
     --cor_fundo: #ffe0a1;
 }
 
@@ -315,7 +314,7 @@ footer .navFooter button {
     transition: .3s;
 }
 
-footer .navFooter button:hover{
+footer .navFooter button:hover {
     color: var(--cor_secundaria);
 }
 
