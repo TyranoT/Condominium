@@ -24,15 +24,17 @@
             <h2>Criar Conta</h2>
             <form action="../PHP/cadastro.php" method="POST">
                 <label for="nomeSindico">Nome do Síndico</label>
-                <input type="text" name="nomeSindico" id="nomeSindico">
+                <input type="text" required name="nomeSindico" id="nomeSindico">
+                <label for="email">E-mail</label>
+                <input type="text" required name="email" id="email">
                 <label for="nomeCondominio">Nome do Condomínio</label>
-                <input type="text" name="nomeCondominio" id="nomeCondominio">
+                <input type="text" required name="nomeCondominio" id="nomeCondominio">
                 <label for="nomeRua">Nome da Rua</label>
-                <input type="text" name="nomeRua" id="nomeRua">
+                <input type="text" required name="nomeRua" id="nomeRua">
                 <label for="numeroCondominio">Número do Condomínio</label>
-                <input type="text" name="numeroCondominio" id="numeroCondominio">
+                <input type="text" required name="numeroCondominio" id="numeroCondominio">
                 <label for="estadoCondominio">Estado do Condomínio</label>
-                <input type="text" name="estadoCondominio" id="estadoCondominio">
+                <input type="text" required name="estadoCondominio" id="estadoCondominio">
                 <span>
                     <label for="salas">Salas ou Áreas</label>
                     <p>
