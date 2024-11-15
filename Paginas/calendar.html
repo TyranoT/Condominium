@@ -16,7 +16,7 @@
     <header>
         <div class="LogoHeader"></div>
         <nav>
-            <button class="btn btn-outline-primary">Início</button>
+            <a href="../"><button class="btn btn-outline-primary">Início</button></a>
             <button class="btn btn-outline-primary">Informações</button>
         </nav>
     </header>
@@ -32,37 +32,36 @@
             </span>
         </div>
         <div id="calendar" class="calendar"></div>
+        <div id='informeReserva'></div>
     </main>
     <nav id="sideBar" class="sideBarHidden">
         <button class="buttonClose" onclick="FecharSideBar()">X</button>
-        <form action="../PHP/" method="post" id="form" style="display: flex; flex-direction: column;">
+        <form action="../PHP/agendamento.php" method="post" id="form" style="display: flex; flex-direction: column;">
             
-            <label for="nomeResponsavel" style="display: flex; flex-direction: column;">
-                <p>Nome do Responsável:</p>
-                <input name="nomeResponsavel" id="nomeResponsavel" type="text">
-            </label>
-            
-            <label for="salaSelect" style="display: flex; flex-direction: column;">
-                <p>Sala de Reserva:</p>
-                <select name="salaSelect" id="salaSelect">
-
-                </select>
-            </label>
-
-            <label for="horaInicio" style="display: flex; flex-direction: column;">
-                <p>Horário de Início:</p>
-                <input name="horaInicio" id="horaInicio" type="time">
-            </label>
-
-            <label for="horaFim" style="display: flex; flex-direction: column;">
-                <p>Horário de Fim:</p>
-                <input name="horaFim" id="horaFim" type="time">
-            </label>
-
-            <label for="data" style="display: flex; flex-direction: column;">
-                <p>Data:</p>
-                <input name="data" id="data" type="date">
-            </label>
+            <div id="sideBarContent">
+                <label for="nomeResponsavel" style="display: flex; flex-direction: column;">
+                    <p>Nome do Responsável:</p>
+                    <input name="nomeResponsavel" id="nomeResponsavel" type="text">
+                </label>
+                
+                <label for="salaSelect" style="display: flex; flex-direction: column;">
+                    <p>Sala de Reserva:</p>
+                    <select name="salaSelect" id="salaSelect">
+                    </select>
+                </label>
+                <label for="horaInicio" style="display: flex; flex-direction: column;">
+                    <p>Horário de Início:</p>
+                    <input name="horaInicio" id="horaInicio" type="time">
+                </label>
+                <label for="horaFim" style="display: flex; flex-direction: column;">
+                    <p>Horário de Fim:</p>
+                    <input name="horaFim" id="horaFim" type="time">
+                </label>
+                <label for="data" style="display: flex; flex-direction: column;">
+                    <p>Data:</p>
+                    <input name="data" id="data" type="date">
+                </label>
+            </div>
 
             <button type="submit" class="btn btn-primary">Agendar</button>
         </form>

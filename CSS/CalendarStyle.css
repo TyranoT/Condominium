@@ -92,6 +92,14 @@ header nav {
     margin-right: 20px;
 }
 
+.informeReservaOn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: -12px;
+}
+
 header nav button {
     display: flex;
     justify-content: center;
@@ -207,10 +215,12 @@ header nav button {
 .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 2px;
-    height: 50%;
-    width: 70%;
+    height: 60%;
+    width: 80%;
     margin: auto;
+    border: 1px solid var(--cor_secundaria);
+    border-radius: 5px;
+    padding: 15px;
 }
 
 .day-button {
@@ -220,6 +230,8 @@ header nav button {
     border: none;
     cursor: pointer;
     font-size: 14px;
+    position: relative;
+    border: 1px solid var(--cor_secundaria);
 }
 
 .day-button-invalid {
@@ -229,6 +241,8 @@ header nav button {
     border: none;
     cursor: not-allowed;
     font-size: 14px;
+    position: relative;
+    border: 1px solid var(--cor_secundaria);
 }
 
 .day-button:hover {
@@ -266,8 +280,16 @@ header nav button {
 }
 
 .day-button-agendado {
+    position: relative;
     background-color: var(--cor_secundaria);
     color: var(--cor_principal);
+}
+
+.dias {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2px;
 }
 
 footer {
