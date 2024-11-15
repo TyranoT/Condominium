@@ -55,6 +55,7 @@ label {
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"] {
     padding: 6px;
     border: 1px solid var(--azul-escuro);

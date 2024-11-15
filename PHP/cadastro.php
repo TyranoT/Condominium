@@ -1,8 +1,8 @@
 <?php
 
-// Recebendo os dados do formulário
 $nomeSindico = $_POST['nomeSindico'];
 $email = $_POST['email'];
+$senha = $_POST['senha'];
 $nomeCondominio = $_POST['nomeCondominio'];
 $nomeRua = $_POST['nomeRua'];
 $numeroCondominio = $_POST['numeroCondominio'];
@@ -12,8 +12,8 @@ $salas = json_decode($_POST['salasArmazenado'], true);
 $connect = mysqli_connect('junction.proxy.rlwy.net', 'root', 'VzXXsFUcaDRjnHrRbgFycSQzayDyKASl', 'railway', 10676);
 
 if ($connect) {
-    $query = "INSERT INTO usuarios (nomeSindico, email, nomeCondominio, nomeRua, numeroCondominio, estadoCondominio, salas) 
-              VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO usuarios (nomeSindico, email, senha, nomeCondominio, nomeRua, numeroCondominio, estadoCondominio, salas) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
     $stmt = mysqli_prepare($connect, $query);
     
@@ -21,7 +21,7 @@ if ($connect) {
     if ($stmt) {
         $salasJson = json_encode($salas);
         
-        mysqli_stmt_bind_param($stmt, 'ssssss', $nomeSindico, $email, $nomeCondominio, $nomeRua, $numeroCondominio, $estadoCondominio, $salasJson);
+        mysqli_stmt_bind_param($stmt, 'ssssss', $nomeSindico, $email, $senha, $nomeCondominio, $nomeRua, $numeroCondominio, $estadoCondominio, $salasJson);
         
         if (mysqli_stmt_execute($stmt)) {
             echo "Dados inseridos com sucesso!";
