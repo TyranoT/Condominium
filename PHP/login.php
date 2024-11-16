@@ -1,33 +1,33 @@
 <?php
-session_start();
-require "./connectBD.php";
+session_start(); //inicia sessão
+require "./connectBD.php"; //conexão com banco de dados
 
-$email = $_POST['email'];
-$senha = $_POST['password'];
+$email = $_POST['email']; // email
+$senha = $_POST['password']; // senha
 
-$query_dados = "SELECT email, senha FROM usuarios WHERE email = ?";
+$query_dados = "SELECT email, senha FROM usuarios WHERE email = ?"; //Comando SQL
 
-$stmt = mysqli_prepare($connect, $query_dados);
+$stmt = mysqli_prepare($connect, $query_dados); //criar conexão e prepara para aplicar os dados
 
 if($stmt){
-    mysqli_stmt_bind_param($stmt, 's', $email);
-    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_param($stmt, 's', $email); // Passa os parametros
+    mysqli_stmt_execute($stmt); // executa o comando sql
 
-    $result = mysqli_stmt_get_result($stmt);
-    if($row = mysqli_fetch_assoc($result)){
-        $emailBD = $row['email'];
-        $senhaBD = $row['senha'];
+    $result = mysqli_stmt_get_result($stmt); //mostra o resultado
+    if($row = mysqli_fetch_assoc($result)){ //Pega o resultado por colunas
+        $emailBD = $row['email']; // Coluna de Email
+        $senhaBD = $row['senha']; // Coluna de Senha
         if($emailBD == $email && $senhaBD == $senha) {
-            $_SESSION['email'] = $email;
+            $_SESSION['email'] = $email; // Adicionando valor a sessão
             echo "<script>
                 window.alert('Login Realizado Com Sucesso!');
                 window.location.href = '../Paginas/calendar.html';
-            </script>";
+            </script>"; //alert do js
         } else {
             echo "<script>
                 window.alert('Email ou Senha Incorreto!');
                 window.location.href = '../Paginas/signin.html';
-            </script>";
+            </script>"; //alert do js
         }
     }
 }
