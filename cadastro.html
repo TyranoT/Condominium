@@ -25,8 +25,13 @@
             <label for="endereco">Endereço</label>
             <input type="text" id="endereco" name="endereco" required>
             <label for="sala">Salas</label>
-            <input type="text" id="sala" name="sala" required>
-            
+            <input type="hidden" id="escondidinho">
+            <spam class="list">
+                <input type="text" id="sala" name="sala" required>
+                <button onclick="add(event)" type="button">Adicionar</button>
+            </spam>
+            <div id="lista">
+            </div>
             <button type="submit">Cadastrar</button>
         </form>
     </div>
@@ -41,4 +46,5 @@
         </div>
     </footer>
 </body>
+<script src="./js/salas.js"></script>
 </html>
