@@ -123,6 +123,7 @@ main > h1::after{
 }
 
 .sideBar {
+    box-shadow: 0px 0px 5px black;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -138,6 +139,10 @@ main > h1::after{
     border-radius: 0px 0px 0px 5px;
     color: white;
     transition: transform 0.3s ease;
+}
+
+.invisibleButton{
+    display: none;
 }
 
 .sideBar .buttonClose {
@@ -190,7 +195,13 @@ main > h1::after{
 }
 
 .sideBarHidden {
-    display: none;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    color: white;
+    height: 100%;
+    transform: translateX(100%);
 }
 
 /* Configuração do rodapé */

@@ -79,17 +79,18 @@ function mesProximo(){
 //Pegando os elementos da sidebar
 const sideBar = document.getElementById('sideBar');
 const sideBarContent = document.getElementById('sideBarContent');
-const dataInput = document.getElementById('data');
+const buttonClose = document.getElementById('buttonClose');
 
 //Função pra quando apertar no "X" fechar a sideBar
 function FecharSideBar() {
     sideBar.className = 'sideBarHidden';
     sideBarContent.innerHTML = '';
-    dataInput.value = '';
+    buttonClose.className = 'invisibleButton';
 }
 
 //Conteudo da sidebar
 function showForm(dataAgendamento) {
+    buttonClose.className = 'buttonClose';
     sideBarContent.innerHTML = 
         `<label for="nomeResponsavel" style="display: flex; flex-direction: column;">
             <p>Nome do Responsável:</p>
