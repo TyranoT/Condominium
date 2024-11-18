@@ -122,6 +122,85 @@ main > h1::after{
     background-color: var(--azul-mais-escuro);
 }
 
+.sideBar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    bottom: 50px;
+    right: 0;
+    padding: 10px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    backdrop-filter: blur(5px);
+    background-color: #01357e93;
+    border: 1px solid black;
+    border-radius: 0px 0px 0px 5px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.sideBar .buttonClose {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    border: 1px solid darkred;
+    font-weight: 600;
+    color: white;
+    border-radius: 0px 0px 5px 0px;
+    background-color: crimson;
+}
+
+.sideBar label {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.sideBar select {
+    width: 90%;
+    margin: auto;
+    background-color: transparent;
+    padding: 3px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 6px;
+}
+
+.sideBar select option {
+    background-color: black;
+    color: white;
+}
+
+.sideBar input {
+    width: 90%;
+    margin: auto;
+    padding: 3px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
+.sideBar .btn.btn-primary {
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.sideBarHidden {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    height: 100%;
+    transform: translateX(100%);
+}
+
 /* Configuração do rodapé */
 footer{
     background-color: var(--azul-mais-escuro);

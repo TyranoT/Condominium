@@ -29,6 +29,7 @@ function criarCalendario(ano,mes){
     for(let dia = 1; dia <= diasNoMes; dia++){
         const botaoDia = document.createElement('button');
         const dataBotao = new Date(ano, mes, dia);
+        const formated = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`; //Data formatada
 
         //Se a dataBotao tiver data menor que a data do dia de hoje, ele deixa o botão com uma classe diferente e desativado.
         if(dataBotao < diaDeHoje){
@@ -37,6 +38,11 @@ function criarCalendario(ano,mes){
         }else{
             //Se não ele fica com uma classe normal.
             botaoDia.className = 'dia-botao-valido';
+            //Ao ser clicado ele abre a sidebar ja com a data do calendario que foi clicada
+            botaoDia.onclick = () => { 
+                sideBar.className = 'sideBar';
+                showForm(formated)
+            }
         }
 
         botaoDia.textContent = dia;
@@ -68,6 +74,46 @@ function mesProximo(){
         anoAtual++;
     }
     criarCalendario(anoAtual,mesAtual);
+}
+
+//Pegando os elementos da sidebar
+const sideBar = document.getElementById('sideBar');
+const sideBarContent = document.getElementById('sideBarContent');
+const dataInput = document.getElementById('data');
+
+//Função pra quando apertar no "X" fechar a sideBar
+function FecharSideBar() {
+    sideBar.className = 'sideBarHidden';
+    sideBarContent.innerHTML = '';
+    dataInput.value = '';
+}
+
+//Conteudo da sidebar
+function showForm(dataAgendamento) {
+    sideBarContent.innerHTML = 
+        `<label for="nomeResponsavel" style="display: flex; flex-direction: column;">
+            <p>Nome do Responsável:</p>
+            <input name="nomeResponsavel" id="nomeResponsavel" type="text">
+        </label>
+        
+        <label for="salaSelect" style="display: flex; flex-direction: column;">
+            <p>Sala de Reserva:</p>
+            <select name="salaSelect" id="salaSelect">
+            </select>
+        </label>
+        <label for="horaInicio" style="display: flex; flex-direction: column;">
+            <p>Horário de Início:</p>
+            <input name="horaInicio" id="horaInicio" type="time">
+        </label>
+        <label for="horaFim" style="display: flex; flex-direction: column;">
+            <p>Horário de Fim:</p>
+            <input name="horaFim" id="horaFim" type="time">
+        </label>
+        <label for="data" style="display: flex; flex-direction: column;">
+            <p>Data:</p>
+            <input name="data" value="${dataAgendamento}" id="data" type="date">
+        </label>
+        <button type="submit" class="btn btn-primary">Agendar</button>`;
 }
 
 //Ele cria o calendário pela primeira vez para começar.
