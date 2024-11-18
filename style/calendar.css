@@ -190,15 +190,7 @@ main > h1::after{
 }
 
 .sideBarHidden {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    right: 0;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    height: 100%;
-    transform: translateX(100%);
+    display: none;
 }
 
 /* Configuração do rodapé */
