@@ -19,6 +19,7 @@ if($stmt){
         $senhaBD = $row['senha']; // Coluna de Senha
         if($emailBD == $email && $senhaBD == $senha) {
             $_SESSION['email'] = $email; // Adicionando valor a sessão
+            header("location", "../Paginas/calendar.html")
             echo "<script>
                 window.location.href = '../Paginas/calendar.html';
             </script>"; //alert do js
