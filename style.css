@@ -6,7 +6,7 @@
 
 
 body {
-    background-image: url(img/regimen-de-propiedad-en-condominio.jpg);
+    background-image: url(./img/regimen-de-propiedad-en-condominio.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -22,7 +22,7 @@ body {
     color: var(--bege);
 }
 
-.container{
+.container {
     margin-top: 80px;
     display: flex;
     justify-content: center;
@@ -37,6 +37,11 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-left: 60px;
     margin-top: 20%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h2 {
@@ -54,6 +59,7 @@ label {
 }
 
 input[type="text"],
+input[type='email'],
 input[type="password"] {
     padding: 10px;
     border: 1px solid var(--azul-escuro);
@@ -83,18 +89,19 @@ button:hover {
     box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
     width: 100%;
     height: 100%;
-    overflow: hidden; 
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .container {
-    width: 100vw; 
-    height: 100vh; 
+    width: 100vw;
+    height: 100vh;
     position: relative;
 }
 
@@ -111,14 +118,8 @@ body, html {
 }
 
 
-
-.btn-group {
-    
-}
-
-
 footer {
-    background-color: rgba(1, 53, 87, 0.8); 
+    background-color: rgba(1, 53, 87, 0.8);
     padding: 20px;
     text-align: center;
     position: fixed;
@@ -126,42 +127,39 @@ footer {
     bottom: 0;
 }
 
-
-
-
-.hr{
+.hr {
     color: white;
     text-align: left;
 }
 
-.redes.socias{
-color: white;
+.redes.socias {
+    color: white;
 }
 
 .logo {
     position: absolute;
-    top: 10px; 
-    left: 10px; 
+    top: 10px;
+    left: 10px;
     width: 100px;
     height: 100px;
     background-image: url("./img/logo.jpg");
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
     border-radius: 50%;
-  }
+}
 
 .botao {
-    
     padding: 0px;
-    color:var(--laranja);
-    margin-top: 5%;
-    margin-left: 46%;
-    
-  }
+    color: var(--laranja);
+    text-shadow: 0px 0px 10px black;
+}
 
-
-.login-cadastro{
+.login-cadastro {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
 }
