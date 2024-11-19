@@ -20,7 +20,6 @@ if($stmt){
         if($emailBD == $email && $senhaBD == $senha) {
             $_SESSION['email'] = $email; // Adicionando valor a sessão
             echo "<script>
-                window.alert('Login Realizado Com Sucesso!');
                 window.location.href = '../Paginas/calendar.html';
             </script>"; //alert do js
         } else {
