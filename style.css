@@ -4,9 +4,14 @@
     --bege: #ffe0a1;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background-image: url(img/regimen-de-propiedad-en-condominio.jpg);
+    background-image: url(img/regimen-de-propiedad-en-condominio.jpg); /*corpo do site*/
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -22,66 +27,8 @@ body {
     color: var(--bege);
 }
 
-.login-container {
-    background-color: var(--laranja);
-    width: 350px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-h2 {
-    margin-bottom: 20px;
-}
-
-.cadastro {
-    color: var(--azul-escuro);
-    font-weight: bolder;
-}
-
-form {  
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-top: 10px;
-    color: var(--azul-escuro);
-    font-weight: bolder;
-}
-
-input[type="text"],
-input[type="password"] {
-    padding: 10px;
-    border: 1px solid var(--azul-escuro);
-    border-radius: 6px;
-    margin-bottom: 10px;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: var(--azul-escuro);
-    color: var(--bege);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: var(--bege);
-    color: var(--azul-escuro);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body, html {
-    width: 100%;
+    width: 100%;  /*config do corpo do site*/
     height: 100%;
     overflow: hidden; 
     display: flex;
@@ -89,15 +36,8 @@ body, html {
     justify-content: center;
 }
 
-.container {
-    width: 100vw; 
-    height: 100vh; 
-    position: relative;
-}
-
-
 .header {
-    position: absolute;
+    position: absolute; /*cabeçalho*/
     top: 0;
     width: 100%;
     display: flex;
@@ -107,30 +47,8 @@ body, html {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-
-
-footer {
-    background-color: rgba(1, 53, 87, 0.8); 
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-
-
-.hr{
-    color: white;
-    text-align: left;
-}
-
-.redes.socias{
-color: white;
-}
-
 .logo {
-    position: absolute;
+    position: absolute; /*logo da condominium*/
     top: 10px; 
     left: 10px; 
     width: 100px;
@@ -142,16 +60,84 @@ color: white;
     border-radius: 50%;
 }
 
+.cadastro-container {
+    background-color: var(--laranja); /*bloco de cadastro*/
+    width: 350px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.container {
+    width: 100vw; /*config de posicao de bloco de cadastro*/
+    height: 100vh; 
+    position: relative;
+}
+
+.cadastro {
+    color: var(--azul-escuro); /*modificacao do titulo de cadastro*/
+    font-weight: bolder;
+}
+
+h2 {
+    margin-bottom: 20px; /*posicao do nome de cadastro*/
+}
+
+form {  
+    display: flex; /*config de form*/
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px; /*nomenclatura do form*/
+    color: var(--azul-escuro);
+    font-weight: bolder;
+}
+
+input[type="text"] {
+    padding: 10px; /*blocos de texto do form*/
+    border: 1px solid var(--azul-escuro);
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
 .list {
-    display: flex;
+    display: flex; /*estilizacao da lista de salas*/
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 5px;
 }
 
-li {
-    list-style: none;
+button {
+    margin-top: 20px; /*botao de cadastro*/
+    padding: 20px;
+    background-color: var(--azul-escuro);
+    color: var(--bege);
+    border-radius: 4px;
+    cursor: pointer;
 }
 
+button:hover {
+    background-color: var(--bege); /*alteracao de cor do botao*/
+    color: var(--azul-escuro);
+}
 
+footer {
+    background-color: rgba(1, 53, 87, 0.8); /*rodape*/
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.hr{
+    color: white; /* © 2024 Company, Inc.*/
+    text-align: left;
+}
+
+.redes.socias{ /*logo das redes sociais*/
+color: white;
+}
