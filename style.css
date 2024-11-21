@@ -4,6 +4,11 @@
     --bege: #ffe0a1;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     background-image: url(./img/regimen-de-propiedad-en-condominio.jpg);
@@ -13,7 +18,7 @@ body {
     backdrop-filter: blur(4px);
     width: 100vw;
     height: 100vh;
-    display: flex;
+    display: flex;                      /*CORPO E BACKGROUND DO SITE*/
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -22,118 +27,25 @@ body {
     color: var(--bege);
 }
 
-.container {
-    margin-top: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-container {
-    background-color: var(--laranja);
-    width: 350px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-left: 60px;
-    margin-top: 20%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-h2 {
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-top: 10px;
-    color: var(--azul-escuro);
-}
-
-input[type="text"],
-input[type='email'],
-input[type="password"] {
-    padding: 10px;
-    border: 1px solid var(--azul-escuro);
-    border-radius: 4px;
-    margin-top: 5px;
-}
-
-.botao-entrar {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: var(--azul-escuro);
-    color: var(--bege);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-
-button:hover {
-    background-color: var(--bege);
-    color: var(--azul-escuro);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body,
 html {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: hidden;                   /*CONFIGURAÇÕES DE CORPO*/
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.container {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
-
 
 .header {
     position: absolute;
     top: 0;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end;                      /*CABEÇALHO*/
     padding: 20px;
     background-color: rgba(1, 53, 87, 0.8);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-
-footer {
-    background-color: rgba(1, 53, 87, 0.8);
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-.hr {
-    color: white;
-    text-align: left;
-}
-
-.redes.socias {
-    color: white;
 }
 
 .logo {
@@ -142,24 +54,111 @@ footer {
     left: 10px;
     width: 100px;
     height: 100px;
-    background-image: url("./img/logo.jpg");
+    background-image: url("./img/logo.jpg");            /*LOGO DA CONDOMINIUM*/
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 50%;
 }
 
-.botao {
-    padding: 0px;
-    color: var(--laranja);
-    text-shadow: 0px 0px 10px black;
+.login-cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;        /*DIV GERAL DE LOGIN*/
+    align-items: center;
+    text-align: center;
+    gap: 15px;
 }
 
-.login-cadastro {
+
+
+.login-container {
+    background-color: var(--laranja);
+    width: 350px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 60px;                                          /*BLOCO DE LOGIN*/
+    margin-top: 20%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    gap: 15px;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    margin-top: 80px;                 /*CONFIGURAÇÕES DE POSIÇÃO DO BLOCO DE LOGIN*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+h2 {
+    margin-bottom: 20px;        /*POSIÇÃO DO NOME LOGIN*/
+}
+
+form {
+    display: flex;
+    flex-direction: column;     /*CONFIGURAÇÕES DO FORMULÁRIO*/
+}
+
+label {
+    margin-top: 10px;
+    color: var(--azul-escuro);  /*NOMENCLATURAS DO FORMULÁRIO*/
+}
+
+input[type="text"],
+input[type='email'],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid var(--azul-escuro);   /*BLOCOS DE TEXTO DO FORMULÁRIO*/
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.botao-entrar {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--azul-escuro);
+    color: var(--bege);                         /*BOTÃO DE ENTRADA COM LOGIN*/
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: var(--bege);
+    color: var(--azul-escuro);              /*ALTERAÇÃO DA COR DO BOTÃO DE ENTRAR*/
+}
+
+.botao {
+    padding: 0px;
+    color: var(--laranja);
+    text-shadow: 0px 0px 10px black;   /*REDIRECIONAMENTO PARA A PÁGINA DE CADASTRO*/
+}
+
+
+footer {
+    background-color: rgba(1, 53, 87, 0.8);
+    padding: 20px;
+    text-align: center;                                /*RODAPÉ*/
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.hr {
+    color: white;               /*2024 Company, Inc.*/
+    text-align: left;
+}
+
+.redes.socias {
+    color: white;        /*REDIRECIONAMENTO PARA AS REDES SOCIAIS*/
 }
