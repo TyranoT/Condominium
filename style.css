@@ -1,12 +1,12 @@
 :root {
     --azul-escuro: #013557;
-    --laranja: #d48b33;
+    --laranja: #d48b33;         /*PALETA DE CORES DO SITE*/
     --bege: #ffe0a1;
 }
 
 * {
     margin: 0;
-    padding: 0;
+    padding: 0;                 /*ALINHAMENTO GERAL DO SITE*/
     box-sizing: border-box;
 }
 
