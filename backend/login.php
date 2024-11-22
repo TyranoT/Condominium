@@ -1,13 +1,13 @@
 <?php 
 session_start(); //Inicia a sessão
-reqquire "./conexaoBD.php"; //Conexão com o banco de dados
+require "./conexaoBD.php"; //Conexão com o banco de dados
 
 $email = $_POST['email']; //Email
 $senha = $_POST['password']; //Senha
 
 $query_dados = "SELECT email , senha From usuarios Where email = ?"; //Comando SQL
 
-$stmt = mysqli_prepare(msql: $connect , query: $query_dados); //Cria a conexeção e prepara o aplicamento dos dados
+$stmt = mysqli_prepare( $connect , $query_dados); //Cria a conexeção e prepara o aplicamento dos dados
 
 if($stmt){
     mysqli_stmt_bind_param($stmt, 's', $email); // Passa os parametros
@@ -30,9 +30,5 @@ if($stmt){
             </script>"; //alert do js
         }
     }
-
-
-
-
 
 }
