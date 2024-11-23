@@ -1,0 +1,294 @@
+:root {
+    --cor_principal: #01357e;
+    --cor_secundaria:  #d48b33;
+    --cor_fundo: #ffe0a1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 100vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    height: 160px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--cor_fundo);
+    position: relative;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+    }
+}
+
+.LogoHeader {
+    background-image: url(../Diversos/images/C\ \(6\)\ \(1\).png);
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: center;
+    height: 470px;
+    width: 500px;
+    position: absolute;
+    top: -100%;
+    left: 0%;
+}
+
+@media (max-width: 800px) {
+    .LogoHeader {
+        display: flex;
+        position: relative;
+        top: 0;
+        width: 100%;
+        background-size: 160%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .LogoHeader {
+        display: flex;
+        position: relative;
+        top: 0;
+        width: 100%;
+        background-size: 250%;
+        margin-top: 20px;
+    }
+}
+
+header nav {
+    position: absolute;
+    right: 40px;
+    width: 400px;
+}
+
+@media (max-width: 800px) {
+    header nav {
+        display: flex;
+        position: relative;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        justify-content: space-around;
+        padding-bottom: 10px;
+    }
+}
+
+.banner {
+    background-image: url(../Diversos/images/ImageBanner.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
+    box-shadow: inset 1px 1px 10px black;
+}
+
+.banner-text {
+    backdrop-filter: blur(2px);
+    background: linear-gradient(to right, black 5%, transparent 95%);
+    color: var(--cor_secundaria);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    padding-left: 16px;
+    justify-content: center;
+    gap: 50px;
+    text-shadow: 0px 0px 50px gray;
+}
+
+main .topico1 {
+    background: var(--cor_fundo);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--cor_principal);
+    padding: 10px;
+}
+
+main .topico1 h2 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main .topico1 p {
+    text-align: justify;
+    font-size: 18px;
+    text-indent: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+main .topico2 {
+    background: var(--cor_principal);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--cor_secundaria);
+    padding: 10px;
+    padding-bottom: 40px;
+}
+
+main .topico2 h2 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main .topico2 p {
+    text-align: center;
+    font-size: 18px;
+}
+
+main .topico2 .ExemploCalendar {
+    height: 50vh;
+    width: 80%;
+    border: 1px solid var(--cor_secundaria);
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px var(--cor_secundaria);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .topico2 .ExemploCalendar table {
+    width: 90%;
+    height: 90%;
+}
+
+main .topico2 .ExemploCalendar td {
+    border: 1px solid #d48b33;
+    min-width: 50px;
+    min-height: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: .3s;
+}
+
+main .topico2 .ExemploCalendar td:hover {
+    background-color: var(--cor_secundaria);
+    color: var(--cor_principal);
+}
+
+main .topico2 .ExemploCalendar td sup {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
+
+footer {
+    background-color: var(--cor_fundo);
+    min-height: 20vh;
+}
+
+footer .navFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--cor_principal);
+}
+
+footer .navFooter button {
+    background: transparent;
+    border: none;
+    color: var(--cor_principal);
+    font-weight: 600;
+    transition: .3s;
+}
+
+footer .navFooter button:hover{
+    color: var(--cor_secundaria);
+}
+
+footer .sectionFooter {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: var(--cor_principal);
+}
+
+footer .sectionFooter p {
+    text-align: center;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+footer .asideFooter {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: auto;
+    justify-content: space-around;
+    padding-bottom: 40px;
+    color: white;
+    font-size: 24px;
+}
+
+footer .asideFooter a {
+    text-decoration: none;
+    color: var(--cor_principal);
+}
+
+footer .asideFooter a:visited {
+    text-decoration: none;
+    color: var(--cor_principal);
+}
+
+footer .asideFooter a .bi.bi-facebook {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-facebook:hover {
+    color: mediumblue;
+}
+
+footer .asideFooter a .bi.bi-whatsapp {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-whatsapp:hover {
+    color: greenyellow;
+}
+
+footer .asideFooter a .bi.bi-instagram {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-instagram:hover {
+    color: fuchsia;
+}
+
+footer .asideFooter a .bi.bi-github {
+    transition: .2s;
+}
+
+footer .asideFooter a .bi.bi-github:hover {
+    color: black;
+}
