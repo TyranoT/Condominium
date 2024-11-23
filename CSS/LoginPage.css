@@ -11,7 +11,7 @@
 }
 
 body {
-    background-image: url(./img/regimen-de-propiedad-en-condominio.jpg);
+    background-image: url('../Diversos/images/regimen-de-propiedad-en-condominio\ \(1\).jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -54,7 +54,7 @@ html {
     left: 10px;
     width: 100px;
     height: 100px;
-    background-image: url("./img/logo.jpg");            /*LOGO DA CONDOMINIUM*/
+    background-image: url("../Diversos/images/logo\ \(1\).jpg");            /*LOGO DA CONDOMINIUM*/
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
