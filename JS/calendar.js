@@ -6,7 +6,49 @@ let anoAtual = new Date().getFullYear();
 let mesAtual = new Date().getMonth();
 const diaDeHoje = new Date();
 
-function criarCalendario(ano, mes) {
+fetch('../PHP/lista_salas.php', {
+    method: 'GET'
+})
+    .then(resposta => {
+        if (!resposta.ok) { // Verifica se a resposta não é válida
+            throw new Error('Erro de resposta do Servidor!');
+        }
+        return resposta.json(); // Converte a resposta para JSON
+    })
+    .then(dados => {
+        if (dados.error) { // Verifica se houve erro nos dados retornados
+            console.error(dados.error);
+            alert('Erro ao carregar as salas: ', dados.error);
+        } else {
+            // Popula o seletor de salas com os dados recebidos
+            const salas = dados;
+            const selectInput = document.getElementById('salaSelect');
+
+            selectInput.innerHTML = ''; // Limpa as opções atuais
+
+            salas.forEach(e => {
+                const options = document.createElement('option');
+                options.value = e;
+                options.textContent = e;
+                selectInput.appendChild(options); // Adiciona cada sala como opção
+            });
+    }
+});
+
+// Faz uma requisição para obter os agendamentos e atualiza o calendário
+function reqAgendados() {
+    fetch("../PHP/agendados.php", { method: 'GET' })
+        .then(resposta => resposta.json()) // Converte a resposta para JSON
+        .then(data => {
+            console.log(data.agendamento); // Log dos agendamentos
+            const info = document.getElementById('info');
+            info.textContent = `${data.nomeSindico} | ${data.nomeCondominio}`;
+            criarCalendario(anoAtual, mesAtual, data.agendamento);
+            console.log(data.agendamento) // Cria o calendário com os agendamentos
+        });
+}
+
+function criarCalendario(ano, mes, agendamento) {
     divCalendario.innerHTML = '';
     const nomeMeses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
@@ -30,12 +72,15 @@ function criarCalendario(ano, mes) {
         const botaoDia = document.createElement('button');
         const dataBotao = new Date(ano, mes, dia);
         const formated = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`; //Data formatada
-
+        const agendados = agendamento.find(e => e.data === formated);
         //Se a dataBotao tiver data menor que a data do dia de hoje, ele deixa o botão com uma classe diferente e desativado.
         if (dataBotao < diaDeHoje) {
             botaoDia.className = 'dia-botao-invalido';
             botaoDia.disabled = true;
-        } else {
+        }else if (agendados) {
+            botaoDia.className = 'dia-botao-agendado';
+            botaoDia.onclick = () => showAgendamento(agendados);
+        }else {
             //Se não ele fica com uma classe normal.
             botaoDia.className = 'dia-botao-valido';
             //Ao ser clicado ele abre a sidebar ja com a data do calendario que foi clicada
@@ -63,7 +108,8 @@ function mesAnterior() {
         mesAtual = 11;
         anoAtual--;
     }
-    criarCalendario(anoAtual, mesAtual);
+    reqAgendados();
+    criarCalendario(anoAtual, mesAtual, []);
 }
 
 //Quando ele clicar em próximo lá no site ele executa essa função, que aumenta o mesAtual e cria denovo o calendário e se o mes for maior que 11 (o índice 11 representa dezembro), ele aumenta o ano também.
@@ -73,7 +119,8 @@ function mesProximo() {
         mesAtual = 0;
         anoAtual++;
     }
-    criarCalendario(anoAtual, mesAtual);
+    reqAgendados();
+    criarCalendario(anoAtual, mesAtual, []);
 }
 
 //Pegando os elementos da sidebar
@@ -115,7 +162,50 @@ function showForm(dataAgendamento) {
             <input name="data" value="${dataAgendamento}" id="data" type="date">
         </label>
         <button type="submit" class="btn btn-primary">Agendar</button>`;
+        updateSalaSelect();
 }
 
+// Atualiza o seletor de salas com dados do servidor
+function updateSalaSelect() {
+    fetch('../PHP/lista_salas.php', { method: 'GET' })
+        .then(resposta => {
+            if (!resposta.ok) {
+                throw new Error('Erro de resposta do Servidor!');
+            }
+            return resposta.json();
+        })
+        .then(dados => {
+            const salas = dados;
+            const selectInput = document.getElementById('salaSelect');
+            selectInput.innerHTML = ''; // Limpa as opções
+            salas.forEach(e => {
+                const options = document.createElement('option');
+                options.value = e;
+                options.textContent = e;
+                selectInput.appendChild(options);
+            });
+        });
+}
+function showAgendamento(agendamento) {
+    const dataISO = agendamento.data;
+    const [ano, mes, dia] = dataISO.split('-');
+
+    sideBar.className = 'sideBar';
+    const content = `
+        <button id="buttonClose" onclick="FecharSideBar()">X</button>
+        <h3>Agendamento para ${dia + '/' + mes + '/' + ano}</h3>
+        <p><strong>Nome:</strong> ${agendamento.nomeResponsavel}</p>
+        <p><strong>Hora Inicio:</strong> ${agendamento.horaInicio}</p>
+        <p><strong>Hora Fim:</strong> ${agendamento.horaFim}</p>
+        <p><strong>Sala Reservada:</strong> ${agendamento.sala}</p>
+    `;
+    sideBarContent.innerHTML = content;
+}
+
+async function inicio() {
+    const agendamentos = await reqAgendados();
+    criarCalendario(anoAtual, mesAtual, agendamentos ? agendamentos.data : []);
+}
 //Ele cria o calendário pela primeira vez para começar.
-criarCalendario(anoAtual, mesAtual);
+
+inicio();
