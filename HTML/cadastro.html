@@ -18,26 +18,30 @@
             <a href="../index.html"><button type="button" class="btn btn-outline-primary">Voltar</button></a>
         </div>
     </header>
-    <div class="cadastro-container">
+    <main class="cadastro-container">
         <h2 class="cadastro">Cadastro</h2>
         <form action="../PHP/cadastro.php" method="POST">
             <label for="username">Nome</label>
             <input type="text" id="username" name="username" required>
             <label for="username">Nome do Condomínio</label>
             <input type="text" id="username" name="username" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required>
             <label for="endereco">Endereço</label>
             <input type="text" id="endereco" name="endereco" required>
             <label for="sala">Salas</label>
-            <input type="hidden" id="escondidinho">
-            <spam class="list">
-                <input type="text" id="sala" name="sala" required>
+            <input type="hidden" id="escondidinho" name="escondidinho">
+            <span class="list">
+                <input type="text" id="sala" name="sala">
                 <button onclick="add(event)" type="button">Adicionar</button>
-            </spam>
+            </span>
             <div id="lista">
             </div>
             <button type="submit">Cadastrar</button>
         </form>
-    </div>
+    </main>
     <footer>
         <div class="hr">
             <hr>

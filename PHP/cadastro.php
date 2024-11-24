@@ -8,7 +8,7 @@ $nomeCondominio = $_POST['nomeCondominio'];
 $nomeRua = $_POST['nomeRua'];
 $numeroCondominio = $_POST['numeroCondominio'];
 $estadoConominio = $_POST['estadoCondominio'];
-$sala = json_decode($_POST['salasArmazenado'], true); // Decodifica parra a array
+$sala = json_decode($_POST['escondidinho'], true); // Decodifica parra a array
 
 if ($connect) {
     $queryUser = "INSERT INTO usuarios (nomeSindico,email,senha,nomeCondominio,nomeRua,numeroCondominio,estadoCondominio,salas)
