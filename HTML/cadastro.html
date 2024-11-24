@@ -21,18 +21,25 @@
     <main class="cadastro-container">
         <h2 class="cadastro">Cadastro</h2>
         <form action="../PHP/cadastro.php" method="POST">
+
             <label for="username">Nome</label>
             <input type="text" id="username" name="username" required>
-            <label for="username">Nome do Condomínio</label>
-            <input type="text" id="username" name="username" required>
+
+            <label for="nomeCondominio">Nome do Condomínio</label>
+            <input type="text" id="nomeCondominio" name="nomeCondominio" required>
+
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
+
             <label for="password">Senha</label>
             <input type="password" id="password" name="password" required>
+
             <label for="endereco">Endereço</label>
             <input type="text" id="endereco" name="endereco" required>
-            <label for="sala">Salas</label>
+
+            <label for="escondidinho">Salas</label>
             <input type="hidden" id="escondidinho" name="escondidinho">
+
             <span class="list">
                 <input type="text" id="sala" name="sala">
                 <button onclick="add(event)" type="button">Adicionar</button>

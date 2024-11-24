@@ -1,34 +1,32 @@
 <?php
 require './conexaoBD.php'; // Conexão com o banco de dados
 // informações essenciais para a reserva e onde será feito a reserva
-$nomeSindico = $_POST['nomeSindico'];
+$nomeSindico = $_POST['username'];
 $email = $_POST['email'];
-$senha = $_POST['senha'];
+$senha = $_POST['password'];
 $nomeCondominio = $_POST['nomeCondominio'];
-$nomeRua = $_POST['nomeRua'];
-$numeroCondominio = $_POST['numeroCondominio'];
-$estadoConominio = $_POST['estadoCondominio'];
+$nomeRua = $_POST['endereco'];
 $sala = json_decode($_POST['escondidinho'], true); // Decodifica parra a array
 
 if ($connect) {
-    $queryUser = "INSERT INTO usuarios (nomeSindico,email,senha,nomeCondominio,nomeRua,numeroCondominio,estadoCondominio,salas)
-        VALUES (?,?,?,?,?,?,?,?)"; // O '?' Representa paramentros que serão seguidos
+    $queryUser = "INSERT INTO usuarios (nomeSindico,email,senha,nomeCondominio,nomeRua,salas)
+        VALUES (?,?,?,?,?,?)"; // O '?' Representa paramentros que serão seguidos
 
 
     $stmt = mysqli_prepare($connect, $queryUser); // Prepara para passar os paramentros 
 
 
     if ($stmt) { // Se tem paramentros
-        $salasJson = json_encode($salas); //Codifica para json
+        $salasJson = json_encode($sala); //Codifica para json
 
         // Paramentros que serão colocados (prepare($stmt), tipo(significa string para cada dado) e o restante dos dados seguindo a ordem )
-        mysqli_stmt_bind_param($stmt, 'ssssssss', $nomeSindico, $email, $senha, $nomeCondominio, $nomeRua, $numeroCondominio, $estadoConominio, $salasJson);
+        mysqli_stmt_bind_param($stmt, 'ssssss', $nomeSindico, $email, $senha, $nomeCondominio, $nomeRua, $salasJson);
 
         // Aqui ele executa e se tudo der certo ele retorna true para acionar o if
         if (mysqli_stmt_execute($stmt)) {
             echo "<script>
             window.alert('Dados Inseridos com Sucesso');
-            window.location.href = '../
+            window.location.href = '../HTML/login.html';
             </script>";
         } else {
             echo "Erro ao executar a query:" . mysqli_stmt_error($stmt);
